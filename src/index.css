@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* (keep any existing base styles here) */
+
+/* If you have this block, keep it closed only once */
+@layer utilities {
+  .text-balance { text-wrap: balance; }   /* keep if you had it */
+}
+
+/* --- Our additions (global, not inside @layer) --- */
+html { scroll-behavior: smooth; }
+
+/* slow pulse animation used by the loading UI */
+@keyframes pulse-slow {
+  0%, 100% { opacity: .5; }
+  50% { opacity: 1; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
