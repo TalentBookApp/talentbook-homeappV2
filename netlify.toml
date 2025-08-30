@@ -5,12 +5,12 @@
 # Прокси към employer app, но URL остава talentbook.work/company
 [[redirects]]
   from = "/company"
-  to   = "https://employerapp.netlify.app/company"
+  to   = "https://employerapp.netlify.app"
   status = 200
   force = true
 
 [[redirects]]
   from = "/company/*"
-  to   = "https://employerapp.netlify.app/company/:splat"
+  to   = "https://employerapp.netlify.app/:splat"
   status = 200
   force = true
