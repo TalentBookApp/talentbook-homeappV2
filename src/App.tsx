@@ -126,7 +126,7 @@ export default function App() {
   // Separate useEffect for handling user changes and redirection
   useEffect(() => {
     if (user?.user_metadata?.user_type === 'company') {
-      window.location.href = 'https://employerapp.netlify.app'
+      window.location.href = window.location.replace('/company')
       return
     }
   }, [user])
