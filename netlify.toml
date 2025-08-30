@@ -1,0 +1,11 @@
+# Redirect root visits to /company (so opening employerapp.netlify.app goes to /company)
+[[redirects]]
+  from = "/"
+  to   = "/company"
+  status = 301
+
+# SPA fallback for client-side routes under /company (e.g., /company/dashboard)
+[[redirects]]
+  from = "/company/*"
+  to   = "/company/index.html"
+  status = 200
