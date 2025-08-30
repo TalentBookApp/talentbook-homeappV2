@@ -107,6 +107,11 @@ export default function App() {
     }
   }, 2500)
 })
+useEffect(() => {
+  if (user) {
+    maybeRedirectEmployer(user.id)
+  }
+}, [user])
 
 
     return () => subscription.unsubscribe()
