@@ -39,3 +39,4 @@ export async function maybeRedirectEmployer(userId?: string) {
     // Use replace() so Back doesn't bounce the user back to the login screen.
     window.location.replace(EMPLOYER_APP_URL)
   }
+}
