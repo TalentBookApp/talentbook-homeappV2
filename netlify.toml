@@ -1,13 +1,16 @@
-[[redirects]]
-from = "/"
-to = "/company"
-status = 301
-
-[[redirects]]
-from = "/company/*"
-to = "/company/index.html"
-status = 200
-
 [build]
-command = "npm run build"
-publish = "dist"
+  command = "npm run build"
+  publish = "dist"
+
+# Proxy към employer app, но URL остава на talentbook.work/company
+[[redirects]]
+  from = "/company"
+  to   = "https://employerapp.netlify.app/company"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/company/*"
+  to   = "https://employerapp.netlify.app/company/:splat"
+  status = 200
+  force = true
