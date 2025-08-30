@@ -39,4 +39,13 @@ export async function maybeRedirectEmployer(userId?: string) {
     // Use replace() so Back doesn't bounce the user back to the login screen.
     window.location.replace(EMPLOYER_APP_URL)
   }
+  export async function maybeRedirectEmployer(userId?: string) {
+  if (!userId) return
+  // ⬇️ ДОБАВИ ТОВА – пази от цикъл, ако вече си под /company
+  if (window.location.pathname.startsWith('/company')) return
+
+  const type = await getUserType(userId)
+  if (type === 'company') {
+    window.location.replace('/company')
+  }
 }
