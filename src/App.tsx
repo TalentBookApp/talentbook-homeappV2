@@ -102,23 +102,20 @@ export default function App() {
       }, remain)
     })
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setLoading(true)
-      setTimeout(() => {
-        const loggedInUser = session?.user ?? null
-        setUser(loggedInUser)
-        setLoading(false)
-        if (loggedInUser) {
-          setIsLoginModalOpen(false)
-          setIsSignupModalOpen(false)
-          // Check if user is a company and redirect to employer app
-          if (loggedInUser.user_metadata?.user_type === 'company') {
-            window.location.href = window.location.replace('/company')
-            return
-          }
-        }
-      }, 2500)
-    })
+const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+  setLoading(true)
+  setTimeout(() => {
+    const loggedInUser = session?.user ?? null
+    setUser(loggedInUser)
+    setLoading(false)
+    if (loggedInUser) {
+      setIsLoginModalOpen(false)
+      setIsSignupModalOpen(false)
+      // ⬇️ ДОБАВИ ТОЗИ РЕД
+      maybeRedirectEmployer(loggedInUser.id)
+    }
+  }, 2500)
+})
 
     return () => subscription.unsubscribe()
   }, [])
