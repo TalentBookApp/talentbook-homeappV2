@@ -41,6 +41,15 @@ export default function App() {
   const [tempSignupData, setTempSignupData] = useState<SignupData | null>(null)
   const [currentPage, setCurrentPage] = useState<'home' | 'complete-profile'>('home')
 
+  // Logout function
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut()
+    } catch (error) {
+      console.error('Error signing out:', error)
+    }
+  }
+
   const texts = [
     'What job are you looking for?',
     'Who are you looking to hire?'
@@ -225,7 +234,7 @@ export default function App() {
           <div className="flex items-center space-x-4">
             {user ? (
               <button
-                onClick={() => supabase.auth.signOut()}
+                onClick={handleLogout}
                 className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:shadow-lg hover:shadow-red-600/25 hover:-translate-y-0.5"
               >
                 Sign Out
