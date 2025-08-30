@@ -94,22 +94,23 @@ export default function App() {
     const {
       data: { subscription }
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      setLoading(true)
-      setTimeout(() => {
-        setUser(session?.user ?? null)
-        setLoading(false)
-        if (session?.user) {
-          setIsLoginModalOpen(false)
-          setIsSignupModalOpen(false)
-          
-          // Check if user is an employer and redirect to employer app
-          const userType = session.user.user_metadata?.user_type
-          if (userType === 'company') {
-            window.location.href = '/employer'
-            return
-          }
+      setUser(session?.user ?? null)
+      
+      if (session?.user) {
+        setIsLoginModalOpen(false)
+        setIsSignupModalOpen(false)
+        
+        // Check if user is an employer and redirect to employer app
+        const userType = session.user.user_metadata?.user_type
+        if (userType === 'company') {
+          window.location.href = '/employer'
+          return
         }
-      }, 2500)
+      } else {
+        // User logged out, reset to home page
+        setCurrentPage('home')
+        setTempSignupData(null)
+      }
     })
 
     return () => subscription.unsubscribe()
