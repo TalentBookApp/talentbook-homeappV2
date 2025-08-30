@@ -2,7 +2,7 @@
   command = "npm run build"
   publish = "dist"
 
-# Proxy към employer app, но URL остава на talentbook.work/company
+# Прокси към employer app, но URL остава talentbook.work/company
 [[redirects]]
   from = "/company"
   to   = "https://employerapp.netlify.app/company"
