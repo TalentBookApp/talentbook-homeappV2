@@ -116,6 +116,16 @@ const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, sess
     }
   }, 2500)
 })
+    useEffect(() => {
+  (async () => {
+    const { data } = await supabase.auth.getSession()
+    const u = data.session?.user
+    if (u) {
+      maybeRedirectEmployer(u.id)
+    }
+  })()
+}, [])
+
 
     return () => subscription.unsubscribe()
   }, [])
