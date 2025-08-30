@@ -120,7 +120,6 @@ export default function App() {
       window.location.href = 'https://employerapp.netlify.app'
       return
     }
-  }, [])
   }, [user])
 
   // Hand-off from SignupModal → profile completion (exactly like main app)
