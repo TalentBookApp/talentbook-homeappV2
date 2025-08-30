@@ -101,6 +101,13 @@ export default function App() {
         if (session?.user) {
           setIsLoginModalOpen(false)
           setIsSignupModalOpen(false)
+          
+          // Check if user is an employer and redirect to employer app
+          const userType = session.user.user_metadata?.user_type
+          if (userType === 'company') {
+            window.location.href = '/employer'
+            return
+          }
         }
       }, 2500)
     })
