@@ -2,7 +2,7 @@
 import { supabase } from './supabase'
 
 export type UserType = 'job_seeker' | 'company'
-const EMPLOYER_APP_URL = 'https://employerapp.netlify.app'
+const EMPLOYER_APP_URL = '/company'
 
 /**
  * Returns the user's type from auth metadata, then falls back to the profiles table.
