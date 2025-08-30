@@ -113,7 +113,7 @@ export default function App() {
           setIsSignupModalOpen(false)
           // Check if user is a company and redirect to employer app
           if (loggedInUser.user_metadata?.user_type === 'company') {
-            window.location.href = 'https://employerapp.netlify.app'
+            window.location.href = window.location.replace('/company')
             return
           }
         }
