@@ -7,6 +7,8 @@ import { SignupModal } from './components/signup-modal'
 import { LoginModal } from './components/login-modal'
 import { PrivacyTermsModal } from './components/PrivacyTermsModal'
 import { supabase, type User } from './lib/supabase'
+import { maybeRedirectEmployer } from './lib/roleRedirect'
+
 
 // Completion flows (make sure these files exist in this project)
 import { JobSeekerProfileCompletion } from './components/JobSeekerProfileCompletion'
