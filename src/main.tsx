@@ -9,3 +9,5 @@ createRoot(root).render(
   <BrowserRouter basename="/company">
     <App />
   </BrowserRouter>
+
+)
